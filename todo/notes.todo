@@ -1,0 +1,51 @@
+Database:
+
+  Academic (user):
+    ☐ name string
+    ☐ title string
+    ☐ role enum
+
+  Editor:
+    ☐ name string
+    ☐ title string
+    ☐ university_affliation string
+    ☐ email string
+
+  Journal:
+    ☐ title string
+    ☐ editor reference(Editor)
+    ☐ description text
+    ☐ impact_factor float
+    ☐ has_many :methodologies
+    ☐ has_many :topics
+
+  Methodologies:
+  The type of research that Journals accept
+  ☐ name string
+
+  Topics:
+  What are we researching or theme of Journal
+  ☐ name string
+
+  Article:
+  What an Academic has published
+  ☐ title string
+  ☐ abstract text
+  ☐ author references (Academic)
+  ☐ has_many :methodologies
+  ☐ has_many :topics
+
+Functionality:
+ ☐ Sign in / Sign out
+ ☐ Add new Journal
+   ☐ Setup new editor and associate
+   ☐ Set multiple methodologies
+   ☐ Set multiple topics
+ ☐ Add new Methodology (admin-only)
+ ☐ Add new Topic (open)
+ ☐ Search for journals matching criteria
+   ☐ Search by methodlogy
+   ☐ Search by topic
+   ☐ Search by title of Journal
+   ☐ Search by impact_factor
+     ☐ Min and/or Max
