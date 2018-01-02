@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227154218) do
+ActiveRecord::Schema.define(version: 20171227163523) do
 
   create_table "academics", force: :cascade do |t|
     t.string "name", null: false
     t.string "title"
     t.integer "role", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "journals", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.decimal "impact_factor", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

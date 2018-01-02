@@ -1,8 +1,8 @@
 Database:
 
   Academic (user):
-    ☐ name string
-    ☐ title string
+    ✔ name string @done (17-12-27 11:15)
+    ✔ title string @done (17-12-27 11:15)
     ☐ role enum
 
   Editor:
@@ -12,10 +12,10 @@ Database:
     ☐ email string
 
   Journal:
-    ☐ title string
+    ✔ title string @done (17-12-27 11:35)
+    ✔ description text @done (17-12-27 11:35)
+    ✔ impact_factor float @done (17-12-27 11:35)
     ☐ editor reference(Editor)
-    ☐ description text
-    ☐ impact_factor float
     ☐ has_many :methodologies
     ☐ has_many :topics
 
