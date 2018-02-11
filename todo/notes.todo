@@ -3,7 +3,7 @@ Database:
   Academic (user):
     ✔ name string @done (17-12-27 11:15)
     ✔ title string @done (17-12-27 11:15)
-    ☐ role enum
+    ☐ role STI
 
   Editor:
     ☐ name string

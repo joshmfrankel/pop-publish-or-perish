@@ -1,6 +1,6 @@
 class AcademicsController < ApplicationController
   def create
-    Academic.create(academic_params[:academic])
+    Academic.create(academic_params)
 
     redirect_back fallback_location: root_path
   end
@@ -8,6 +8,6 @@ class AcademicsController < ApplicationController
   private
 
   def academic_params
-    params.permit(academic: [:name, :email, :password])
+    params.require(:academic).permit(:name, :email, :password)
   end
 end

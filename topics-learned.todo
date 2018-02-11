@@ -1,0 +1,40 @@
+Topics learnered:
+  ☐ redirect_back - redirect browser to page that issued request (Rails 5)
+  http://devdocs.io/rails~5.1/actioncontroller/redirecting#method-i-redirect_back
+
+  ☐ Resetting postgres user password properly
+  https://serverfault.com/questions/110154/whats-the-default-superuser-username-password-for-postgres-after-a-new-install
+
+Setting up Postgres:
+  ☐ Log into postgres as postgres user
+  sudo -u postgres psql postgres
+  ☐ Create new role for the new project
+  CREATE ROLE pop WITH CREATEDB login password 'publish-or-perish';
+  ☐ Setup database.yml properly
+  Make sure to use localhost in order for peer security to work properly
+  https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge
+  ☐ Include gem 'pg', '~> 0.18' in Gemfile (note don't use 1.0.0 as is not compatible with Rails 5)
+  https://stackoverflow.com/questions/48201361/rails-application-using-postgres-adapter-cant-activate-pg/48201362#48201362
+  ☐ Interactive console for new user
+  sudo -u postgres createuser --interactive --pwprompt
+  ☐ Recieving strange errors?
+  PG::ConnectionBad: FATAL:  password authentication failed for user "CCC"
+FATAL:  password authentication failed for user "CCC"
+
+  from (irb):1
+    ☐ Try restarting spring: bundle exec spring stop
+
+Settings up Webpacker for Rails 5:
+  ☐ Install Yarn
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+Getting data into Webpacker:
+  * https://learnetto.com/blog/how-to-get-your-rails-data-into-your-react-component-with-webpacker
+  * https://github.com/renchap/webpacker-react
+  Also see JournalListing locally
+
+Controller Test in Minitest:
+  * https://blog.bigbinary.com/2016/04/19/changes-to-test-controllers-in-rails-5.html
+  Must pass params: { resource_name: { attrs }}
+
