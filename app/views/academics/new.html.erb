@@ -1,0 +1,18 @@
+<h2>Academic edit</h2>
+
+<div id="clearance" class="sign-up">
+  <h2><%= t(".title") %></h2>
+
+  <%= form_for @academic do |form| %>
+    <% binding.pry %>
+    <%= render partial: '/academics/form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit %>
+    </div>
+
+    <div class="other-links">
+      <%= link_to t(".sign_in"), sign_in_path %>
+    </div>
+  <% end %>
+</div>

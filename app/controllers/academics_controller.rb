@@ -1,8 +1,19 @@
-class AcademicsController < ApplicationController
-  def create
-    Academic.create(academic_params)
+class AcademicsController < Clearance::UsersController
 
-    redirect_back fallback_location: root_path
+  def new
+    @academic = Academic.new
+  end
+
+  def create
+    academic = Academic.new(academic_params)
+
+    if academic.save
+      sign_in(academic)
+
+      flash[:notice] = I18n.t(".signin")
+
+      redirect_back fallback_location: root_path
+    end
   end
 
   private

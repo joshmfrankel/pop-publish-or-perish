@@ -6,13 +6,15 @@ class JournalListing extends React.Component {
     const journals = this.props.journals;
 
     return(
-      journals.map((journal) =>
-        <tr>
-          <td>{journal.title}</td>
-          <td>{journal.description}</td>
-          <td>{journal.impact_factor}</td>
-        </tr>
-      )
+      <tbody>
+        {journals.map((journal) =>
+          <tr key={journal.id}>
+            <td>{journal.title}</td>
+            <td>{journal.description}</td>
+            <td>{journal.impact_factor}</td>
+          </tr>
+        )}
+      </tbody>
     );
   }
 }

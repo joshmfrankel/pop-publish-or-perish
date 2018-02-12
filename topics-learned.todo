@@ -1,6 +1,7 @@
 Topics learnered:
   ☐ redirect_back - redirect browser to page that issued request (Rails 5)
   http://devdocs.io/rails~5.1/actioncontroller/redirecting#method-i-redirect_back
+  https://blog.bigbinary.com/2016/02/29/rails-5-improves-redirect_to_back-with-redirect-back.html
 
   ☐ Resetting postgres user password properly
   https://serverfault.com/questions/110154/whats-the-default-superuser-username-password-for-postgres-after-a-new-install
@@ -33,6 +34,9 @@ Getting data into Webpacker:
   * https://learnetto.com/blog/how-to-get-your-rails-data-into-your-react-component-with-webpacker
   * https://github.com/renchap/webpacker-react
   Also see JournalListing locally
+
+Keys in React:
+  https://reactjs.org/docs/lists-and-keys.html#keys
 
 Controller Test in Minitest:
   * https://blog.bigbinary.com/2016/04/19/changes-to-test-controllers-in-rails-5.html
