@@ -4,7 +4,6 @@
   <h2><%= t(".title") %></h2>
 
   <%= form_for @academic do |form| %>
-    <% binding.pry %>
     <%= render partial: '/academics/form', object: form %>
 
     <div class="submit-field">
