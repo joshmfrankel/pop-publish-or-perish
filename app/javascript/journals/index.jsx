@@ -8,12 +8,14 @@ const JOURNAL_HEADERS = ["Title", "Description", "Impact Factor", ""];
 class JournalListing extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       journals: this.props.journals,
       sortDirection: 1,
     };
 
     this.setSortDirection = this.setSortDirection.bind(this);
+    this.removeJournal = this.removeJournal.bind(this);
   }
 
   /**
@@ -49,8 +51,13 @@ class JournalListing extends React.Component {
     });
   }
 
+  removeJournal(event) {
+    console.log(event);
+  }
+
   render() {
     const journals = this.state.journals;
+    const token = this.props.token;
 
     return(
       <div>
@@ -61,6 +68,7 @@ class JournalListing extends React.Component {
               <th onClick={() => this.sortJournals("description")}>Description</th>
               <th onClick={() => this.sortJournals("impact_factor")}>Impact Factor</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -68,6 +76,8 @@ class JournalListing extends React.Component {
               <Row
                 journal={journal}
                 key={journal.id}
+                token={token}
+                removeJournal={this.removeJournal}
               />
             )}
           </tbody>
@@ -82,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const journalsListingData = JSON.parse(journalsNode.getAttribute("data"))
 
   ReactDOM.render(
-    <JournalListing journals={journalsListingData} />,
+    <JournalListing journals={journalsListingData.journals} token={journalsListingData.token} />,
     document.body.appendChild(document.createElement('div')),
   )
 })

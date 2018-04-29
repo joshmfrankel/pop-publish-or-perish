@@ -1,0 +1,17 @@
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  title: MyString
+  email: one@example.com
+  encrypted_password: $2a$10$un9NI.g.8GbKBHRWObSgVOWC1pz2iroHTzXDx6bvXa3R4ea0IDmSW
+  remember_token: token
+  role: 1
+
+two:
+  name: MyString
+  title: MyString
+  email: two@example.com
+  encrypted_password: $2a$10$un9NI.g.8GbKBHRWObSgVOWC1pz2iroHTzXDx6bvXa3R4ea0IDmSW
+  remember_token: token
+  role: 1
