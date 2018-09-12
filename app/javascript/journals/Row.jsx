@@ -1,5 +1,5 @@
 import React from "react"
-// import debounce from 'lodash.debounce';
+import debounce from 'lodash/debounce';
 
 class Row extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Row extends React.Component {
     };
 
     this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.handleChange = debounce(this.handleChange.bind(this), 250);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   toggleEditMode() {
@@ -60,8 +60,8 @@ class Row extends React.Component {
         <td>{this.displayRowData(journal.title, "title")}</td>
         <td>{this.displayRowData(journal.description, "description")}</td>
         <td>{this.displayRowData(journal.impact_factor, "impact_factor")}</td>
-        <td onClick={this.toggleEditMode}>Edit</td>
-        <td onClick={this.removeJournal}>Delete</td>
+        <td onClick={this.toggleEditMode} className="cp">Edit</td>
+        <td onClick={this.props.handleRemoveJournal} className="cp">Delete</td>
       </tr>
     );
   }

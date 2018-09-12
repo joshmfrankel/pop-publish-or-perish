@@ -5,10 +5,36 @@ class JournalsController < ApplicationController
     @journals = Journal.all
   end
 
+  def new
+    @journal = Journal.new
+  end
+
+  def create
+    journal = Journal.new(journal_params)
+
+    if journal.save
+      flash[:notice] = I18n.t(".success")
+
+      redirect_back fallback_location: root_path
+    else
+      # TODO
+    end
+  end
+
   def update
     journal = Journal.find(params[:id])
 
     if journal.update(journal_params)
+      render json: { message: "Success!" }, status: :success
+    else
+      render json: { message: "Failure" }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    journal = Journal.find(params[:id])
+
+    if journal.destroy
       render json: { message: "Success!" }, status: :success
     else
       render json: { message: "Failure" }, status: :unprocessable_entity

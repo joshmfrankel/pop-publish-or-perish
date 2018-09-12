@@ -15,7 +15,7 @@ class JournalListing extends React.Component {
     };
 
     this.setSortDirection = this.setSortDirection.bind(this);
-    this.removeJournal = this.removeJournal.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   /**
@@ -51,8 +51,31 @@ class JournalListing extends React.Component {
     });
   }
 
-  removeJournal(event) {
-    console.log(event);
+  // @Todo: Only change state if fetch success
+  removeJournal(journalId) {
+    let journals = this.state.journals.filter(i => i["id"] !== journalId);
+
+    if(confirm("Are you sure you want to delete this Journal?")) {
+      this.setState({ journals: journals});
+      fetch('journals/' + journalId, {
+        method: "DELETE",
+        headers: {
+          'X-CSRF-Token': this.props.token
+        },
+        credentials: 'same-origin'
+      });
+    }
+  }
+
+  handleSearch(event) {
+    let searchTerm = event.target.value;
+    let matches = this.props.journals;
+
+    if (searchTerm.length >= 3) {
+      matches = this.state.journals.filter(j => j["title"].includes(searchTerm));
+    }
+
+    this.setState({ journals: matches });
   }
 
   render() {
@@ -61,6 +84,10 @@ class JournalListing extends React.Component {
 
     return(
       <div>
+        <input
+          name="search"
+          placeholder="Search"
+          onChange={this.handleSearch} /><br />
         <table>
           <thead>
             <tr>
@@ -72,12 +99,15 @@ class JournalListing extends React.Component {
             </tr>
           </thead>
           <tbody>
+            {journals.length == 0 &&
+              <tr><td colSpan="4" className="tac">There are no available Journals</td></tr>
+            }
             {journals.map((journal) =>
               <Row
                 journal={journal}
                 key={journal.id}
                 token={token}
-                removeJournal={this.removeJournal}
+                handleRemoveJournal={this.removeJournal.bind(this, journal.id)}
               />
             )}
           </tbody>
@@ -87,13 +117,14 @@ class JournalListing extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// DOMContentLoaded
+document.addEventListener('turbolinks:load', () => {
   const journalsNode = document.getElementById("journals_listing")
   const journalsListingData = JSON.parse(journalsNode.getAttribute("data"))
 
   ReactDOM.render(
     <JournalListing journals={journalsListingData.journals} token={journalsListingData.token} />,
-    document.body.appendChild(document.createElement('div')),
+    document.querySelector(".Content-target").appendChild(document.createElement('div')),
   )
 })
 

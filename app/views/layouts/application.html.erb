@@ -10,12 +10,15 @@
 
   <body>
     <!-- TODO: Basic authentication from Clearnance -->
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
+    <nav>
+      <% if signed_in? %>
+        <span><%= link_to "Journal Listing", journals_path %></span>
+        <span>Signed in as: <%= current_user.email %></span>
+        <%= button_to 'Sign out', sign_out_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign in', sign_in_path %>
+      <% end %>
+    </nav>
 
     <div id="flash">
       <% flash.each do |key, value| %>
@@ -23,6 +26,10 @@
       <% end %>
     </div>
 
-    <%= yield %>
+    <div class="Content">
+      <%= yield %>
+      <div class="Content-target">
+      </div>
+    </div>
   </body>
 </html>

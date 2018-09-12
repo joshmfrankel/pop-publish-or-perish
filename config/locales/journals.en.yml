@@ -1,0 +1,4 @@
+en:
+  journal:
+    create:
+      success: "New Journal has been created"

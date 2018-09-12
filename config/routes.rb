@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: "journals#index"
 
-  resources :journals, only: [:index, :update]
+  resources :journals
   resources :academics
   get "/sign_up" => "academics#new", as: "sign_up"
 

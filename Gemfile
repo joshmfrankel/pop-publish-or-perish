@@ -32,7 +32,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'pry', '>= 0.11'
+  gem "pry", "~> 0.10"
+  gem "pry-nav", "~> 0.2"
   gem 'selenium-webdriver'
 end
 
@@ -45,6 +46,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "guard", "~> 2.14"
   gem "guard-minitest", "~> 2"
+  gem "guard-shell", "~> 0.7"
   gem 'meta_request'
 end
 
