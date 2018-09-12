@@ -34,6 +34,7 @@ Getting data into Webpacker:
   * https://learnetto.com/blog/how-to-get-your-rails-data-into-your-react-component-with-webpacker
   * https://github.com/renchap/webpacker-react
   Also see JournalListing locally
+  * https://medium.com/@hpux/rails-5-1-loves-javascript-a1d84d5318b
 
 Keys in React:
   https://reactjs.org/docs/lists-and-keys.html#keys
@@ -42,3 +43,23 @@ Controller Test in Minitest:
   * https://blog.bigbinary.com/2016/04/19/changes-to-test-controllers-in-rails-5.html
   Must pass params: { resource_name: { attrs }}
 
+Get parent from child in React:
+  this._reactInternalFiber._debugOwner.stateNode
+  Not recommended
+
+Live reloading for webpacker:
+  ./bin/webpack-dev-server
+
+TravisCI setup environment var for database config:
+  Add env to Travis
+  database.yml should contain ENV
+  use local env setup for above
+
+React.js use defaultValue instead of value for <input>:
+
+ES6 string interpolation:
+  let age = 3;
+  console.log(`I'm ${age} years old!`);
+
+Remove array element without mutation:
+  https://blog.mariusschulz.com/2016/07/16/removing-elements-from-javascript-arrays
