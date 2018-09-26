@@ -1,0 +1,5 @@
+<ul>
+  <% @journals.each do |journal| %>
+    <li><%= journal.title %> - <%= link_to I18n.t("journals.approvals.index.approve"), approval_path(journal), method: :put, data: { confirm: "Are you sure you want to approve, \"#{journal.title}\"?" } %></li>
+  <% end %>
+</ul>

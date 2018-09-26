@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  navigation:
+    journals_awaiting_approval: "%{total} journal(s) awaiting approval"

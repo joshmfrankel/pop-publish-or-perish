@@ -13,6 +13,7 @@
     <nav>
       <% if signed_in? %>
         <span><%= link_to "Journal Listing", journals_path %></span>
+        <span><%= link_to I18n.t("navigation.journals_awaiting_approval", total: journals_awaiting_approval), approvals_path %></span>
         <span>Signed in as: <%= current_user.email %></span>
         <%= button_to 'Sign out', sign_out_path, method: :delete %>
       <% else %>

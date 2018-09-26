@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102160547) do
+ActiveRecord::Schema.define(version: 20180915173308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20180102160547) do
     t.decimal "impact_factor", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "approved_at"
+    t.bigint "approver_id"
+    t.index ["approver_id"], name: "index_journals_on_approver_id"
   end
 
+  add_foreign_key "journals", "academics", column: "approver_id"
 end
