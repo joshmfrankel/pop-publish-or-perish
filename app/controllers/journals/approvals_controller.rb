@@ -1,5 +1,6 @@
 module Journals
   class ApprovalsController < ApplicationController
+    before_action :require_login
 
     def index
       @journals = Journal.unapproved
