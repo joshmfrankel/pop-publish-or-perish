@@ -2,3 +2,9 @@ en:
   journal:
     create:
       success: "New Journal has been created"
+  journals:
+    approvals:
+      index:
+        approve: "Click to approve"
+      update:
+        success: "Journal was approved"

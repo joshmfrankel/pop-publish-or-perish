@@ -2,7 +2,7 @@ class JournalsController < ApplicationController
   before_action :require_login
 
   def index
-    @journals = Journal.all
+    @journals = Journal.approved
   end
 
   def new
@@ -13,7 +13,7 @@ class JournalsController < ApplicationController
     journal = Journal.new(journal_params)
 
     if journal.save
-      flash[:notice] = I18n.t(".success")
+      flash[:notice] = I18n.t("journal.create.success")
 
       redirect_back fallback_location: root_path
     else
@@ -24,7 +24,7 @@ class JournalsController < ApplicationController
   def update
     journal = Journal.find(params[:id])
 
-    if journal.update(journal_params)
+    if journal.update!(journal_params)
       render json: { message: "Success!" }, status: :success
     else
       render json: { message: "Failure" }, status: :unprocessable_entity

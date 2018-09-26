@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "journals#index"
 
   resources :journals
+  scope module: :journals do
+    resources :approvals, only: [:index, :update]
+  end
   resources :academics
   get "/sign_up" => "academics#new", as: "sign_up"
 
