@@ -2,10 +2,8 @@
 
 one:
   title: MyString
-  description: MyText
   impact_factor: 1.5
 
 two:
   title: MyString
-  description: MyText
   impact_factor: 1.5
