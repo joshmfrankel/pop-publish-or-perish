@@ -9,17 +9,26 @@
   </head>
 
   <body>
-    <!-- TODO: Basic authentication from Clearnance -->
-    <nav>
-      <% if signed_in? %>
-        <span><%= link_to "Journal Listing", journals_path %></span>
-        <span><%= link_to I18n.t("navigation.journals_awaiting_approval", total: journals_awaiting_approval), approvals_path %></span>
-        <span>Signed in as: <%= current_user.email %></span>
-        <%= button_to 'Sign out', sign_out_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', sign_in_path %>
-      <% end %>
-    </nav>
+    <!-- TODO: Basic authentication from Clearance -->
+    <div class="Navbar">
+      <%= link_to "POP", root_path, class: "Navbar-home" %>
+      <nav role="navigation" class="Navbar-navigation">
+        <ul>
+          <% if signed_in? %>
+            <li>Signed in as: <%= current_user.email %>
+              <ul class="Navbar-dropdown">
+                <li><%= link_to "Journal Listing", journals_path %></li>
+                <li><%= link_to I18n.t("navigation.journals_awaiting_approval", total: journals_awaiting_approval), approvals_path %></li>
+
+                <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to 'Sign in', sign_in_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
 
     <div id="flash">
       <% flash.each do |key, value| %>

@@ -1,0 +1,42 @@
+.Navbar {
+  $component: &;
+  border-bottom: 1px solid #333;
+  display: flex;
+  padding: 20px;
+
+  &-home {
+    flex-grow: 1;
+  }
+
+  &-navigation {
+    li {
+      display: block;
+      transition-duration: 0.5s;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      #{$component}-dropdown {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        transition: all 0.5s ease;
+        padding-left: 0;
+        display: none;
+
+        li {
+          clear: both;
+          width: 100%;
+        }
+      }
+
+      &:hover > #{$component}-dropdown,
+      #{$component}-dropdown:hover {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
+    }
+  }
+}
