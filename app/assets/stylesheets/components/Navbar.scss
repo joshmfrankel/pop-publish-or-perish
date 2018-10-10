@@ -12,9 +12,16 @@
     li {
       display: block;
       transition-duration: 0.5s;
+      position: relative;
 
-      &:hover {
+      &:hover,
+      &:focus-within {
+        background: white;
         cursor: pointer;
+
+        a {
+          outline: none;
+        }
       }
 
       #{$component}-dropdown {
@@ -23,16 +30,25 @@
         position: absolute;
         transition: all 0.5s ease;
         padding-left: 0;
-        display: none;
+        width: 100%;
+        background: #f0f0f0;
 
         li {
           clear: both;
           width: 100%;
+
+          a {
+            padding: 7px;
+            width: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+          }
         }
       }
 
       &:hover > #{$component}-dropdown,
-      #{$component}-dropdown:hover {
+      &:focus-within > #{$component}-dropdown,
+      #{$component}-dropdown:hover, {
         visibility: visible;
         opacity: 1;
         display: block;

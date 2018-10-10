@@ -15,8 +15,8 @@
       <nav role="navigation" class="Navbar-navigation">
         <ul>
           <% if signed_in? %>
-            <li>Signed in as: <%= current_user.email %>
-              <ul class="Navbar-dropdown">
+            <li aria-haspopup="true">Signed in as: <%= current_user.email %>
+              <ul class="Navbar-dropdown" aria-label="submenu">
                 <li><%= link_to "Journal Listing", journals_path %></li>
                 <li><%= link_to I18n.t("navigation.journals_awaiting_approval", total: journals_awaiting_approval), approvals_path %></li>
 
