@@ -82,6 +82,7 @@ class JournalListing extends React.Component {
   }
 
   onJournalDelete(journalId) {
+    // Determine proper state by removing journal from listing
     let journals = this.state.journals.filter(i => i["id"] !== journalId);
 
     if(confirm("Are you sure you want to delete this Journal?")) {
@@ -91,8 +92,9 @@ class JournalListing extends React.Component {
           'X-CSRF-Token': this.props.token
         },
         credentials: 'same-origin'
-      }).then(function() {
-        this.setState({ journals: journals});
+      }).then(() => {
+        // Only update journal listing after successful removal
+        this.setState({ journals: journals });
       });
     }
   }
@@ -101,14 +103,13 @@ class JournalListing extends React.Component {
     this.setState({ showModal: false, editing: null });
   }
 
-  handleSubmitModal() {
+  handleSubmitModal(event) {
 
     this.handleCloseModal(); // Ensure we reset the modal state
   }
 
   render() {
-    const journals = this.state.journals;
-    const token = this.props.token;
+    const { journals } = this.state;
 
     return(
       <div className="Journal-listing">

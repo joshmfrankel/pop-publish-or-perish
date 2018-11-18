@@ -5,12 +5,12 @@ class Modal extends React.Component {
     super(props);
 
     this.state = {
-      record: this.props.currentRecord;
+      record: this.props.currentRecord,
     }
   }
 
   render() {
-    const { currentRecord } = this.state;
+    const { record } = this.state;
     return (
       <div className="Modal">
         <div className="Modal-container">
@@ -22,7 +22,7 @@ class Modal extends React.Component {
             <label htmlFor="title">
               Title
               <input
-                defaultValue={ currentRecord.title }
+                defaultValue={ record.title }
                 name="title"
                 id="title"
               />
@@ -30,7 +30,7 @@ class Modal extends React.Component {
             <label htmlFor="impact_factor">
               Impact Factor
               <input
-                defaultValue={ currentRecord.impact_factor }
+                defaultValue={ record.impact_factor }
                 name="impact_factor"
                 id="impact_factor"
               />
