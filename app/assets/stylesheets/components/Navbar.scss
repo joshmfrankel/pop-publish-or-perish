@@ -1,0 +1,59 @@
+.Navbar {
+  $component: &;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  &-home {
+    flex-grow: 1;
+  }
+
+  &-navigation {
+    li {
+      display: block;
+      transition-duration: 0.5s;
+      position: relative;
+
+      &:hover,
+      &:focus-within {
+        background: white;
+        cursor: pointer;
+
+        a {
+          outline: none;
+        }
+      }
+
+      #{$component}-dropdown {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        transition: all 0.5s ease;
+        padding-left: 0;
+        width: 100%;
+        background: #f0f0f0;
+
+        li {
+          clear: both;
+          width: 100%;
+
+          a {
+            padding: 7px;
+            width: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+          }
+        }
+      }
+
+      &:hover > #{$component}-dropdown,
+      &:focus-within > #{$component}-dropdown,
+      #{$component}-dropdown:hover, {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
+    }
+  }
+}

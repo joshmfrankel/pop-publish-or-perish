@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: "journals#index"
+  root to: "pages#home"
+  get "home", to: "pages#home"
 
   resources :journals
   scope module: :journals do
