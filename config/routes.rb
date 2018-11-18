@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "home#index"
+  root to: "pages#home"
   get "home", to: "pages#home"
 
   resources :journals

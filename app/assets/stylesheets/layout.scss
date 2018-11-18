@@ -1,10 +1,32 @@
+$eerie-black: #0D1321;
+$azureish-white: #D5EDFF;
+$dark-orange: #FF8811;
+$orange-yellow: #F4D06F;
+
+$raleway: 'Raleway', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
+
+html {
+  color: $eerie-black;
+  // font-size: 62.5%; /* Change em/rem to base 10 */
+  font-family: $raleway;
+}
 body {
   margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: $montserrat;
+  margin: 0 0 18px 0;
+}
+p,
+button {
+  font-family: $raleway;
 }
 table {
   background: #f5f5f5;
   border: 1px solid #333;
-  border-radius: 5px;
   border-collapse: collapse;
   display: inline-block;
 
