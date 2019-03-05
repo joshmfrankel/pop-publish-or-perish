@@ -19,7 +19,6 @@ class JournalListing extends React.Component {
     this.setSortDirection = this.setSortDirection.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleSubmitModal = this.handleSubmitModal.bind(this);
     this.displayBlankState = this.displayBlankState.bind(this);
   }
 
@@ -103,11 +102,6 @@ class JournalListing extends React.Component {
     this.setState({ showModal: false, editing: null });
   }
 
-  handleSubmitModal(event) {
-
-    this.handleCloseModal(); // Ensure we reset the modal state
-  }
-
   render() {
     const { journals } = this.state;
 
@@ -142,9 +136,9 @@ class JournalListing extends React.Component {
         {this.state.showModal &&
           <Modal
             onCloseModal={this.handleCloseModal}
-            onSubmitModal={this.handleSubmitModal}
             title="Edit Journal"
             currentRecord={this.state.editing}
+            token={this.props.token}
           />
         }
       </div>
