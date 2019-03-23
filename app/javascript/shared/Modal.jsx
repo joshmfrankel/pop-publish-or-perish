@@ -22,7 +22,7 @@ class Modal extends React.Component {
   }
 
   // https://github.com/github/fetch/issues/424
-  onSubmitModal(event) {
+  onSubmitModal() {
     fetch('journals/' + this.state.record.id, {
       method: 'PUT',
       headers: {
@@ -36,17 +36,24 @@ class Modal extends React.Component {
         journal: this.state.record
       })
     }).then(() => {
+
+      // Ensure to update the listing's state
+      this.props.onSubmit(this.state.record);
+
+      // Close the modal
       this.props.onCloseModal();
     });
   }
 
   render() {
+    const { modalTitle } = this.props;
     const { record } = this.state;
+
     return (
       <div className="Modal">
         <div className="Modal-container">
           <div className="Modal-header">
-            <h2>{this.props.title}</h2>
+            <h2>{modalTitle}</h2>
           </div>
 
           <div className="Modal-content">

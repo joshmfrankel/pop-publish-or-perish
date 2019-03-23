@@ -19,6 +19,7 @@ class JournalListing extends React.Component {
     this.setSortDirection = this.setSortDirection.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleModalSubmit = this.handleModalSubmit.bind(this);
     this.displayBlankState = this.displayBlankState.bind(this);
   }
 
@@ -102,6 +103,17 @@ class JournalListing extends React.Component {
     this.setState({ showModal: false, editing: null });
   }
 
+  /**
+   * Map through child component's updated journal details and merge updated
+   * journal data onto array index object that matches
+   */
+  handleModalSubmit(updatedJournalData) {
+    const journals = this.state.journals.map(journal =>
+      journal.id === updatedJournalData.id ? { ...journal, ...updatedJournalData } : journal
+    );
+    this.setState({ journals });
+  }
+
   render() {
     const { journals } = this.state;
 
@@ -127,8 +139,16 @@ class JournalListing extends React.Component {
               <tr key={journal.id}>
                 <td>{journal.title}</td>
                 <td>{journal.impact_factor}</td>
-                <td onClick={this.onJournalEdit.bind(this, journal)}><button>Edit</button></td>
-                <td onClick={this.onJournalDelete.bind(this, journal.id)}><button>Delete</button></td>
+                <td onClick={this.onJournalEdit.bind(this, journal)}>
+                  <button title="Edit">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </td>
+                <td onClick={this.onJournalDelete.bind(this, journal.id)}>
+                  <button title="Delete">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
               </tr>
             )}
           </tbody>
@@ -136,7 +156,8 @@ class JournalListing extends React.Component {
         {this.state.showModal &&
           <Modal
             onCloseModal={this.handleCloseModal}
-            title="Edit Journal"
+            onSubmit={this.handleModalSubmit}
+            modalTitle="Edit Journal"
             currentRecord={this.state.editing}
             token={this.props.token}
           />
