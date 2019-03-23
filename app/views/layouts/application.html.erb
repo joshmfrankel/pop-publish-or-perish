@@ -6,33 +6,13 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway:400,600" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/solid.js" integrity="sha384-IA6YnujJIO+z1m4NKyAGvZ9Wmxrd4Px8WFqhFcgRmwLaJaiwijYgApVpo1MV8p77" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/fontawesome.js" integrity="sha384-EMmnH+Njn8umuoSMZ3Ae3bC9hDknHKOWL2e9WJD/cN6XLeAN7tr5ZQ0Hx5HDHtkS" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <!-- TODO: Basic authentication from Clearance -->
-    <div class="Navbar">
-      <span class="Navbar-home">
-        <%= link_to "POP", root_path, class: "Navbar-home" %>
-      </span>
-      <nav role="navigation" class="Navbar-navigation">
-        <ul>
-          <% if signed_in? %>
-            <li aria-haspopup="true">Signed in as: <%= current_user.email %>
-              <ul class="Navbar-dropdown" aria-label="submenu">
-                <li><%= link_to "Journal Listing", journals_path %></li>
-                <% if journals_awaiting_approval.nonzero? %>
-                  <li><%= link_to I18n.t("navigation.journals_awaiting_approval", total: journals_awaiting_approval), approvals_path %></li>
-                <% end %>
-                <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to 'Sign in', sign_in_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
+    <%= render partial: "layouts/navigation" %>
 
     <div id="flash">
       <% flash.each do |key, value| %>
