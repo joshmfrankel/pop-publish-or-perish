@@ -24,8 +24,8 @@ class JournalsController < ApplicationController
   def update
     journal = Journal.find(params[:id])
 
-    if journal.update!(journal_params)
-      render json: { message: "Success!" }, status: :success
+    if journal.update(journal_params)
+      render json: { message: "Success!" }, status: :ok
     else
       render json: { message: "Failure" }, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class JournalsController < ApplicationController
     journal = Journal.find(params[:id])
 
     if journal.destroy
-      render json: { message: "Success!" }, status: :success
+      render json: { message: "Success!" }, status: :ok
     else
       render json: { message: "Failure" }, status: :unprocessable_entity
     end
