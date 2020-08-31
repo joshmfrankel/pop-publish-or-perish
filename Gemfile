@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', git: 'https://github.com/rails/rails.git'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -23,9 +23,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0' # Use Redis adapter to run Action Cable in production
 
 # Application Specific gems
-gem 'clearance', '~> 1.16'
-gem 'pg', '~> 0.18'
-gem 'webpacker', '~> 3.2'
+gem 'clearance', '~> 2.3'
+gem "pg", "~> 1.1"
+gem 'webpacker', '~> 5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,14 +40,14 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
+  # gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "guard", "~> 2.14"
-  gem "guard-minitest", "~> 2"
-  gem "guard-shell", "~> 0.7"
-  gem 'meta_request'
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem "guard", "~> 2.14"
+  # gem "guard-minitest", "~> 2"
+  # gem "guard-shell", "~> 0.7"
+  # gem 'meta_request'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

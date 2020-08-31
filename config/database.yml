@@ -3,13 +3,12 @@ default: &default
   adapter: postgresql
   host: localhost # necessary for Postgres peer security
   encoding: unicode
+  username: postgres
   pool: 5
 
 development: &development
   <<: *default
   database: pop_development
-  username: XXXX
-  password: XXXX
 
 test:
   <<: *development
