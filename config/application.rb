@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+# This includes all Rails features including built-in routes
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems

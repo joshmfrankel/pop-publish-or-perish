@@ -139,16 +139,26 @@ class JournalListing extends React.Component {
               <tr key={journal.id}>
                 <td>{journal.title}</td>
                 <td>{journal.impact_factor}</td>
-                <td onClick={this.onJournalEdit.bind(this, journal)}>
-                  <button title="Edit">
-                    <i class="fas fa-pencil-alt"></i>
-                  </button>
-                </td>
-                <td onClick={this.onJournalDelete.bind(this, journal.id)}>
-                  <button title="Delete">
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </td>
+                {this.props.user.is_admin && (
+                  <React.Fragment>
+                    <td onClick={this.onJournalEdit.bind(this, journal)}>
+                      <button title="Edit">
+                        <i className="fas fa-pencil-alt"></i>
+                      </button>
+                    </td>
+                    <td onClick={this.onJournalDelete.bind(this, journal.id)}>
+                      <button title="Delete">
+                        <i className="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                   </React.Fragment>
+                 )}
+                {!!this.props.user.is_admin && (
+                  <React.Fragment>
+                    <td></td>
+                    <td></td>
+                  </React.Fragment>
+                )}
               </tr>
             )}
           </tbody>
@@ -175,7 +185,7 @@ document.addEventListener('turbolinks:load', () => {
   const data = JSON.parse(node.getAttribute("data"))
 
   ReactDOM.render(
-    <JournalListing journals={data.journals} token={data.token} />,
+    <JournalListing journals={data.journals} token={data.token} user={data.user} />,
     document.querySelector(".Content-target"),
   )
 })

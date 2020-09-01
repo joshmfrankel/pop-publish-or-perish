@@ -1,6 +1,12 @@
 module Approvable
   extend ActiveSupport::Concern
 
+  class_methods do
+    def has_unapproved?
+      unapproved.exists?
+    end
+  end
+
   included do
     scope :approved, -> { where.not(approved_at: nil, approver: nil) }
     scope :unapproved, -> { where(approved_at: nil, approver: nil) }

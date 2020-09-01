@@ -3,7 +3,10 @@
 <%
   data = {
     journals: @journals,
-    token: session[:_csrf_token]
+    token: session[:_csrf_token],
+    user: {
+      is_admin: current_user.admin_role?
+    }
   }
 %>
 <%= content_tag :div,

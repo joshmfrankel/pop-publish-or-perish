@@ -9,7 +9,7 @@
         <li aria-haspopup="true">Signed in as: <%= current_user.email %>
           <ul class="Navbar-dropdown" aria-label="submenu">
             <li><%= link_to "Journal Listing", journals_path %></li>
-            <% if journals_awaiting_approval.nonzero? %>
+            <% if Journal.has_unapproved? && current_user.admin_role? %>
               <li><%= link_to I18n.t("navigation.journals_awaiting_approval", total: journals_awaiting_approval), approvals_path %></li>
             <% end %>
             <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>

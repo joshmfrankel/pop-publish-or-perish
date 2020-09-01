@@ -15,7 +15,7 @@ class JournalsController < ApplicationController
     if journal.save
       flash[:notice] = I18n.t("journal.create.success")
 
-      redirect_back fallback_location: root_path
+      redirect_to journals_path
     else
       # TODO
     end
