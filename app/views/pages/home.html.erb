@@ -1,5 +1,38 @@
-<div class="Hero">
-  <h1>POP</h1>
-  <p>Publish or Perish</p>
-  <button onclick="location.href='<%= journals_path %>'">Start Searching</button>
+<div class="Content__container Content__container--black">
+  <%= image_tag("home/pexels-janko-ferlic-590493", class: "HeaderImage", alt: "Photo of Library by Janko Ferlic from Pexels") %>
+</div>
+
+<div class="Content__container">
+  <div class="Hero Content__innerContainer Content__innerContainer--centered">
+    <h1 class="Hero__title">Welcome to POP</h1>
+    <p class="Hero__pitch">POP is a simple way to find academic journals for publishing
+    your articles. Whether you're searching for a specific journal or finding one that other similiar papers have been submitted to, we make it easy to find what you need.</p>
+    <a href="<%= journals_path %>" class="CallToAction">Get Started</a>
+  </div>
+</div>
+
+<div class="Content__container">
+  <div class="IconGroup Content__innerContainer Content__innerContainer--centered">
+    <div class="IconGroup__section">
+      <div class="Icon">
+        <i class="fas fa-book"></i>
+      </div>
+      <h3>Categories</h3>
+      <p>Journals are categorized by methodology and impact factor allowing for easy filtering.</p>
+    </div>
+    <div class="IconGroup__section">
+      <div class="Icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <h3>Search</h3>
+      <p>Finding a Journal to submit your paper to is now easier than ever with our search functionality.</p>
+    </div>
+    <div class="IconGroup__section">
+      <div class="Icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3>Community</h3>
+      <p>Academic community members are encouraged to add details for new Journals. These are then approved by our moderators.</p>
+    </div>
+  </div>
 </div>

@@ -1,18 +1,13 @@
-$eerie-black: #0D1321;
-$azureish-white: #D5EDFF;
-$dark-orange: #FF8811;
-$orange-yellow: #F4D06F;
-
-$raleway: 'Raleway', sans-serif;
-$montserrat: 'Montserrat', sans-serif;
-
 html {
-  color: $eerie-black;
+  color: $space-cadet;
   // font-size: 62.5%; /* Change em/rem to base 10 */
   font-family: $raleway;
 }
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 h1,
 h2,
@@ -31,7 +26,7 @@ table {
   display: inline-block;
 
   thead {
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid $space-cadet;
 
     th {
       cursor: pointer;
@@ -41,4 +36,11 @@ table {
   td, th {
     padding: 10px;
   }
+}
+input[type="text"] {
+  font-size: 16px;
+  padding: 5px 5px 2px 5px;
+}
+a:hover {
+  filter: brightness(125%);
 }

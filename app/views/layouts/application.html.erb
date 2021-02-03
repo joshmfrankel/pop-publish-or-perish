@@ -22,8 +22,11 @@
 
     <div class="Content">
       <%= yield %>
-      <div class="Content-target">
-      </div>
+    </div>
+
+    <div class="Footer">
+      <p class="Footer__text"><i class="fas fa-heart"></i> Built for everyone by <a href="http://joshfrankel.me/" target="_blank" class="Footer__link">Josh Frankel</a> and Dr. Megan Oed</p>
+      <p class="Footer__text">Copyright 2021-<%= Time.now.year %>. All rights reserved.</p>
     </div>
   </body>
 </html>

@@ -1,9 +1,15 @@
 .Navbar {
   $component: &;
-  border-bottom: 1px solid #333;
+  border-bottom: 3px solid $glossy-grape;
   display: flex;
   align-items: center;
   padding: 20px;
+  background-color: $space-cadet;
+  color: $ghost-white;
+
+  #{$component}__link {
+    color: $ghost-white;
+  }
 
   &-home {
     flex-grow: 1;

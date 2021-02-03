@@ -1,8 +1,13 @@
 class JournalsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, except: :index
 
   def index
-    @journals = Journal.approved
+    @journals = if search_term = params.dig(:journal, :search)
+      Journal
+        .where("title ~* :search_term", search_term: search_term.split(" ").join("|"))
+    else
+      Journal.all
+    end.order(:title)
   end
 
   def new

@@ -3,8 +3,7 @@ en:
     create:
       success: "New Journal has been created"
   journals:
-    approvals:
-      index:
-        approve: "Click to approve"
+    toggle_approvals:
       update:
-        success: "Journal was approved"
+        approve: "Journal was approved"
+        unapprove: "Journal was unapproved"

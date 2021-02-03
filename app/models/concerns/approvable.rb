@@ -12,6 +12,14 @@ module Approvable
     scope :unapproved, -> { where(approved_at: nil, approver: nil) }
   end
 
+  def toggle_approval!(user = nil)
+    if approved?
+      unapprove!
+    else
+      approve!(user)
+    end
+  end
+
   def approve!(user)
     self.approved_at = DateTime.now
     self.approver = user
@@ -22,5 +30,13 @@ module Approvable
     self.approved_at = nil
     self.approver = nil
     save!
+  end
+
+  def approved?
+    self.approved_at.present? && self.approver_id.present?
+  end
+
+  def unapproved?
+    !approved?
   end
 end

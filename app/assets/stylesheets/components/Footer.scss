@@ -1,0 +1,12 @@
+.Footer {
+  align-items: center;
+  background-color: $chinese-violet;
+  border-top: 1px solid $english-violet;
+  display: flex;
+  flex-direction: column;
+}
+
+.Footer__text,
+.Footer__link {
+  color: $ghost-white;
+}

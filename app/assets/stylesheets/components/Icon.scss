@@ -1,0 +1,14 @@
+.IconGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.IconGroup__section {
+  width: 300px;
+}
+.Icon {
+  color: $glossy-grape;
+  font-size: 80px;
+  text-align: center;
+  margin-bottom: 20px;
+}

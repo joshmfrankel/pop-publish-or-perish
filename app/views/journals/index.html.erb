@@ -1,17 +1,35 @@
-<%= javascript_pack_tag 'journals' %>
-
-<%
-  data = {
-    journals: @journals,
-    token: session[:_csrf_token],
-    user: {
-      is_admin: current_user.admin_role?
-    }
-  }
-%>
-<%= content_tag :div,
-  id: "journals_listing",
-  data: data.to_json do %>
+<%= form_with class: 'Actions', model: Journal, method: :get do |form| %>
+  <% if current_academic.admin_role? || current_academic.approver_role? %>
+    <%= link_to new_journal_path, class: "Actions" do %>
+      <i class="fas fa-plus-square Actions__add"></i>
+    <% end %>
+  <% end %>
+  <%= form.text_field 'search', placeholder: 'Enter search term...', class: 'SearchForm__input' %>
+  <%= form.submit 'Search', class: 'SearchForm__submit' %>
 <% end %>
 
-<%= link_to 'Create Journal', new_journal_path %>
+<div class="Content__container">
+  <table class='Content__innerContainer JournalTable'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Impact Factor</th>
+        <% if current_academic.admin_role? %>
+          <th>Approve</th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <% @journals.each do |journal| %>
+      <tr>
+        <td><%= journal.title %></td>
+        <td><%= journal.impact_factor %></td>
+        <% if current_academic.admin_role? %>
+          <td>
+            <%= check_box_tag dom_id(journal, :checkbox), '', journal.approved?, data: { url: toggle_approval_journal_path(journal), remote: true, method: :patch } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

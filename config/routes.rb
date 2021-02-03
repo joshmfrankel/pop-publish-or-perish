@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "home", to: "pages#home"
 
-  resources :journals
-  scope module: :journals do
-    resources :approvals, only: [:index, :update]
+  resources :journals do
+    member do
+      patch :toggle_approval, to: "journals/toggle_approvals#update"
+    end
   end
   resources :academics
   get "/sign_up" => "academics#new", as: "sign_up"
