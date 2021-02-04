@@ -1,22 +1,25 @@
 <div class="Navbar">
-  <span class="Navbar-home">
-    <i class="fas fa-book"></i>
-    <%= link_to "POP", root_path, class: "Navbar__link" %>
-  </span>
-  <nav role="navigation" class="Navbar-navigation">
-    <ul>
-      <% if signed_in? %>
-        <li aria-haspopup="true">
-          <i class="fas fa-bars"></i>
-          Signed in as: <%= current_academic.email %>
-          <ul class="Navbar-dropdown" aria-label="submenu">
-            <li><%= link_to "Journal Listing", journals_path %></li>
-            <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-          </ul>
-        </li>
-      <% else %>
-        <li><%= link_to 'Sign in', sign_in_path %></li>
-      <% end %>
-    </ul>
-  </nav>
+  <div class="Navbar__innerContainer">
+    <span class="Navbar-home">
+      <i class="fas fa-book"></i>
+      <%= link_to "POP", root_path, class: "Navbar__link" %>
+      <%= link_to "Journals", journals_path, class: "Navbar__link" %>
+    </span>
+    <nav role="navigation" class="Navbar-navigation">
+      <ul>
+        <% if signed_in? %>
+          <li aria-haspopup="true">
+            <i class="fas fa-bars"></i>
+            <span class="Navbar__menu">Signed in as: <%= current_academic.email %></span>
+            <ul class="Navbar-dropdown" aria-label="submenu">
+              <li><%= link_to "Journal Listing", journals_path %></li>
+              <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to 'Sign in', sign_in_path, class: "CallToAction" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 </div>

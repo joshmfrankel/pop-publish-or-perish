@@ -20,21 +20,21 @@ button {
   font-family: $raleway;
 }
 table {
-  background: #f5f5f5;
-  border: 1px solid #333;
+  border: 1px solid $space-cadet;
   border-collapse: collapse;
-  display: inline-block;
+  // display: inline-block;
 
   thead {
     border-bottom: 1px solid $space-cadet;
-
-    th {
-      cursor: pointer;
-    }
+    background-color: $chinese-violet;
+    color: $ghost-white;
   }
 
   td, th {
     padding: 10px;
+  }
+  td {
+    border-left: 1px solid $space-cadet;
   }
 }
 input[type="text"] {

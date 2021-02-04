@@ -15,7 +15,11 @@
 }
 .Content__innerContainer {
   max-width: 1200px; /* HeaderImage width */
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.Content__innerContainer--no-padding {
+  padding: 0;
 }
 .Content__innerContainer--centered {
   text-align: center;

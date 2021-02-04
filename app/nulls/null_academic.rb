@@ -6,4 +6,8 @@ class NullAcademic
   def admin_role?
     false
   end
+
+  def approver_role?
+    false
+  end
 end

@@ -1,15 +1,18 @@
-<%= form_with class: 'Actions', model: Journal, method: :get do |form| %>
+<div class="Content__container Actions">
   <% if current_academic.admin_role? || current_academic.approver_role? %>
-    <%= link_to new_journal_path, class: "Actions" do %>
+    <%= link_to new_journal_path do %>
       <i class="fas fa-plus-square Actions__add"></i>
     <% end %>
   <% end %>
-  <%= form.text_field 'search', placeholder: 'Enter search term...', class: 'SearchForm__input' %>
-  <%= form.submit 'Search', class: 'SearchForm__submit' %>
-<% end %>
+
+  <%= form_with class: "SearchForm", model: Journal, method: :get do |form| %>
+    <%= form.text_field 'search', placeholder: 'Enter search term...', class: 'SearchForm__input' %>
+    <%= form.submit 'Search', class: 'SearchForm__submit' %>
+  <% end %>
+</div>
 
 <div class="Content__container">
-  <table class='Content__innerContainer JournalTable'>
+  <table class='JournalTable Content__innerContainer Content__innerContainer--no-padding'>
     <thead>
       <tr>
         <th>Title</th>

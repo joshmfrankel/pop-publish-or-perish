@@ -1,14 +1,22 @@
 .Navbar {
   $component: &;
   border-bottom: 3px solid $glossy-grape;
-  display: flex;
-  align-items: center;
   padding: 20px;
   background-color: $space-cadet;
   color: $ghost-white;
 
+  #{$component}__innerContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
   #{$component}__link {
     color: $ghost-white;
+    text-decoration: none;
   }
 
   &-home {

@@ -1,6 +1,14 @@
 .SearchForm {
   display: flex;
-  margin-bottom: 20px;
+  padding: 15px 0;
+}
+
+.SearchForm__submit {
+  background-color: $glossy-grape;
+  color: $ghost-white;
+  border: 1px solid $space-cadet;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .SearchForm__input,
