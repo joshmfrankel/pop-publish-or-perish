@@ -4,7 +4,3 @@ guard :minitest, spring: "bin/rails test -v" do
   watch(%r{^(lib|app)/(.*/)?([^/]+)\.rb$})     { |m| "test/#{m[2]}#{m[3]}_test.rb" }
   watch(%r{^test/test_helper\.rb$})      { 'test' }
 end
-
-guard :shell do
-  #./bin/webpack-dev-server
-end

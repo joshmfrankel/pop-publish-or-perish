@@ -1,0 +1,16 @@
+<div class="Content__container">
+  <%= turbo_frame_tag "journal" do %>
+    <%= form_with model: @journal, method: :put, class: "Form" do |form| %>
+      <h2>Edit Journal</h2>
+      <%= render partial: 'form', object: form %>
+
+      <div class="submit-field">
+        <%= form.submit "Update", class: "Form__Submit-button" %>
+      </div>
+
+      <div class="other-links">
+        <%= link_to "Back to Journal list", journals_path, data: { "turbo-frame": "_top" } %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

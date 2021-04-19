@@ -1,17 +1,29 @@
 class JournalsController < ApplicationController
-  before_action :require_login, except: :index
+  before_action :require_login, except: [:index, :show]
 
   def index
-    @journals = if search_term = params.dig(:journal, :search)
-      Journal
-        .where("title ~* :search_term", search_term: search_term.split(" ").join("|"))
-    else
-      Journal.all
-    end.order(:title)
+    journals = Journal.all
+
+    # Policy to exclude unapproved journals from guests/default role
+    if !current_academic.admin_role? && !current_academic.approver_role?
+      journals = journals.approved
+    end
+
+    @journals = journals
   end
 
   def new
     @journal = Journal.new
+    @methodologies = Methodology.all
+  end
+
+  def show
+    @journal = Journal.find(params[:id])
+  end
+
+  def edit
+    @journal = Journal.find(params[:id])
+    @methodologies = Methodology.all
   end
 
   def create
@@ -22,7 +34,9 @@ class JournalsController < ApplicationController
 
       redirect_to journals_path
     else
-      # TODO
+      flash[:error] = journal.errors.full_messages.to_sentence
+
+      redirect_to new_journal_path
     end
   end
 
@@ -30,9 +44,13 @@ class JournalsController < ApplicationController
     journal = Journal.find(params[:id])
 
     if journal.update(journal_params)
-      render json: { message: "Success!" }, status: :ok
+      flash[:notice] = I18n.t("journal.update.success")
+
+      redirect_to journal_path(journal)
     else
-      render json: { message: "Failure" }, status: :unprocessable_entity
+      flash[:error] = journal.errors.full_messages.to_sentence
+
+      redirect_to edit_journal_path(journal)
     end
   end
 
@@ -40,7 +58,9 @@ class JournalsController < ApplicationController
     journal = Journal.find(params[:id])
 
     if journal.destroy
-      render json: { message: "Success!" }, status: :ok
+      flash[:notice] = I18n.t("journal.destroy.success")
+
+      redirect_to journals_path
     else
       render json: { message: "Failure" }, status: :unprocessable_entity
     end
@@ -49,6 +69,7 @@ class JournalsController < ApplicationController
   private
 
   def journal_params
-    params.require(:journal).permit(:title, :description, :impact_factor)
+    # params[:journal][:journal_methodologies_attributes][:methodology_id] = params[:journal][:journal_methodologies_attributes][:methodology_id].reject { |m| m.empty? }.map(&:to_i)
+    params.require(:journal).permit(:title, :description, :impact_factor, journal_methodologies_attributes: { })
   end
 end

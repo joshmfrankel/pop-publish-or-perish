@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :methodologies
   root to: "pages#home"
   get "home", to: "pages#home"
 
   resources :journals do
     member do
       patch :toggle_approval, to: "journals/toggle_approvals#update"
+    end
+
+    collection do
+      post :search, to: "journals/searches#index"
     end
   end
   resources :academics

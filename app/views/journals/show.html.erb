@@ -1,0 +1,20 @@
+<div class="Content__container">
+  <%= turbo_frame_tag "journal" do %>
+    <h1><%= @journal.title %></h1>
+    <ul>
+      <li>Impact Factor: <%= @journal.impact_factor %></li>
+    </ul>
+    <% if current_academic.admin_role? %>
+      <div class="Actions">
+        <%= link_to edit_journal_path(@journal) do %>
+          <i class="fas fa-edit"></i>
+          Edit
+        <% end %>
+        <%= link_to @journal, method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-minus-circle"></i>
+          Delete
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

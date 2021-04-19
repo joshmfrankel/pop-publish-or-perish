@@ -1,5 +1,5 @@
 .SearchForm {
-  display: flex;
+  display: inline-flex;
   padding: 15px 0;
 }
 
@@ -11,8 +11,9 @@
   cursor: pointer;
 }
 
-.SearchForm__input,
-.SearchForm__submit {
+.SearchForm__input {
+  width: 250px;
+  margin-bottom: 0;
 }
 
 .SearchForm__input {

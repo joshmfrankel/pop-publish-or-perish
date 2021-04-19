@@ -2,6 +2,10 @@ en:
   journal:
     create:
       success: "New Journal has been created"
+    update:
+      success: "Journal updated"
+    destroy:
+      success: "Journal successfully removed"
   journals:
     toggle_approvals:
       update:

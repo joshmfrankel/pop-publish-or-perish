@@ -19,6 +19,10 @@
     text-decoration: none;
   }
 
+  #{$component}__menu:hover {
+    color: $space-cadet;
+  }
+
   &-home {
     flex-grow: 1;
   }

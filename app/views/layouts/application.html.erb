@@ -5,18 +5,20 @@
     <%= csrf_meta_tags %>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Raleway:400,600" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/solid.js" integrity="sha384-IA6YnujJIO+z1m4NKyAGvZ9Wmxrd4Px8WFqhFcgRmwLaJaiwijYgApVpo1MV8p77" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/fontawesome.js" integrity="sha384-EMmnH+Njn8umuoSMZ3Ae3bC9hDknHKOWL2e9WJD/cN6XLeAN7tr5ZQ0Hx5HDHtkS" crossorigin="anonymous"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
   </head>
 
   <body>
     <%= render partial: "layouts/navigation" %>
 
-    <div id="flash">
+    <div class="Flash">
       <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
+        <div class="Flash__<%= key %>"><%= value %></div>
       <% end %>
     </div>
 
@@ -26,7 +28,7 @@
 
     <div class="Footer">
       <p class="Footer__text"><i class="fas fa-heart"></i> Built for everyone by <a href="http://joshfrankel.me/" target="_blank" class="Footer__link">Josh Frankel</a> and Dr. Megan Oed</p>
-      <p class="Footer__text">Copyright 2021-<%= Time.now.year %>. All rights reserved.</p>
+      <p class="Footer__text">Copyright 2015-<%= Time.now.year %>. All rights reserved.</p>
     </div>
   </body>
 </html>

@@ -4,13 +4,16 @@
       <i class="fas fa-book"></i>
       <%= link_to "POP", root_path, class: "Navbar__link" %>
       <%= link_to "Journals", journals_path, class: "Navbar__link" %>
+      <% if current_academic.admin_role? %>
+        <%= link_to "Methodologies", methodologies_path, class: "Navbar__link" %>
+      <% end %>
     </span>
     <nav role="navigation" class="Navbar-navigation">
       <ul>
         <% if signed_in? %>
-          <li aria-haspopup="true">
+          <li aria-haspopup="true" class="Navbar__menu">
             <i class="fas fa-bars"></i>
-            <span class="Navbar__menu">Signed in as: <%= current_academic.email %></span>
+            <span>Signed in as: <%= current_academic.email %></span>
             <ul class="Navbar-dropdown" aria-label="submenu">
               <li><%= link_to "Journal Listing", journals_path %></li>
               <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>

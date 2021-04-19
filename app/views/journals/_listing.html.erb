@@ -1,0 +1,13 @@
+<tbody id="journalsListing">
+  <% journals.each do |journal| %>
+    <tr>
+      <td><%= link_to journal.title, journal_path(journal.id) %></td>
+      <td><%= journal.impact_factor %></td>
+      <% if current_academic.admin_role? || current_academic.approver_role? %>
+        <td>
+          <%= check_box_tag dom_id(journal, :checkbox), '', journal.approved?, data: { url: toggle_approval_journal_path(journal), remote: true, method: :patch } %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</tbody>

@@ -1,9 +1,16 @@
 <div class="text-field">
   <%= form.label :title %>
-  <%= form.text_field :title %>
+  <%= form.text_field :title, class: "Form__input" %>
 </div>
 
 <div class="text-field">
   <%= form.label :impact_factor %>
-  <%= form.number_field :impact_factor %>
+  <%= form.number_field :impact_factor, class: "Form__input" %>
+</div>
+
+<div class="text-field">
+  <%= form.label :methodologies %>
+  <%= form.fields_for :journal_methodologies do |methodology_form| %>
+    <%= methodology_form.select :methodology_id, @methodologies.pluck(:name, :id), { selected: @journal.methodologies.select(:id) } %>
+  <% end %>
 </div>

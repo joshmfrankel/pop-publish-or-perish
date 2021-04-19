@@ -1,38 +1,45 @@
-<div class="Content__container Actions">
-  <% if current_academic.admin_role? || current_academic.approver_role? %>
-    <%= link_to new_journal_path do %>
-      <i class="fas fa-plus-square Actions__add"></i>
-    <% end %>
-  <% end %>
-
-  <%= form_with class: "SearchForm", model: Journal, method: :get do |form| %>
-    <%= form.text_field 'search', placeholder: 'Enter search term...', class: 'SearchForm__input' %>
-    <%= form.submit 'Search', class: 'SearchForm__submit' %>
-  <% end %>
-</div>
-
 <div class="Content__container">
+  <div class="Content__flexContainer">
+    <% if signed_in? %>
+      <%= link_to new_journal_path, class: "JournalActions__item" do %>
+        <i class="fas fa-plus-square Actions__add"></i> Create Journal
+      <% end %>
+
+      <%= link_to new_journal_path, class: "JournalActions__item" do %>
+        <i class="fas fa-plus-square Actions__add"></i> Create Publication
+      <% end %>
+
+      <% if current_academic.admin_role? %>
+        <%= link_to new_methodology_path, class: "JournalActions__item" do %>
+          <i class="fas fa-plus-square Actions__add"></i> Create Methodology
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= form_with url: search_journals_path, class: "SearchForm Content__item--push" do |form| %>
+      <%= form.text_field 'search_term', placeholder: 'Enter search terms...', class: 'SearchForm__input' %>
+      <%= form.submit 'Search', class: 'SearchForm__submit' %>
+
+      <% if params.dig(:journal, :search) %>
+        <%= link_to journals_path do %>
+          <i class="fas fa-minus-circle"></i>
+          Reset search
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
   <table class='JournalTable Content__innerContainer Content__innerContainer--no-padding'>
     <thead>
       <tr>
         <th>Title</th>
         <th>Impact Factor</th>
-        <% if current_academic.admin_role? %>
+        <% if current_academic.admin_role? || current_academic.approver_role? %>
           <th>Approve</th>
         <% end %>
       </tr>
     </thead>
 
-    <% @journals.each do |journal| %>
-      <tr>
-        <td><%= journal.title %></td>
-        <td><%= journal.impact_factor %></td>
-        <% if current_academic.admin_role? %>
-          <td>
-            <%= check_box_tag dom_id(journal, :checkbox), '', journal.approved?, data: { url: toggle_approval_journal_path(journal), remote: true, method: :patch } %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
+    <%= render partial: "journals/listing", locals: { journals: @journals } %>
   </table>
 </div>

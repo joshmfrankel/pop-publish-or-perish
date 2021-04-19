@@ -1,13 +1,14 @@
-<h2>Add new Journal</h2>
+<div class="Content__container">
+  <%= form_with model: @journal, class: "Form" do |form| %>
+    <h2>Add new Journal</h2>
+    <%= render partial: 'form', object: form %>
 
-<%= form_for @journal do |form| %>
-  <%= render partial: 'form', object: form %>
+    <div class="submit-field">
+      <%= form.submit "Create", class: "Form__Submit-button" %>
+    </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
-
-  <div class="other-links">
-    <%= link_to "Back to Journal list", journals_path %>
-  </div>
-<% end %>
+    <div class="other-links">
+      <%= link_to "Back to Journal list", journals_path %>
+    </div>
+  <% end %>
+</div>
