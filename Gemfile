@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0' # Use Redis adapter to run Action Cable in production
 
 # Application Specific gems
-gem 'clearance', '~> 2.3'
+gem 'clearance', '~> 2.5'
 gem "pg", "~> 1.1"
 gem 'hotwire-rails'
 gem 'webpacker'
