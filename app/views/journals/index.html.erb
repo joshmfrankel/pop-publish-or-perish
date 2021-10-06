@@ -16,9 +16,9 @@
       <% end %>
     <% end %>
 
-    <%= form_with url: search_journals_path, class: "SearchForm Content__item--push" do |form| %>
+    <%= form_with url: search_journals_path, class: "SearchForm Content__item--push", data: { controller: "search" } do |form| %>
       <%= form.text_field 'search_term', placeholder: 'Enter search terms...', class: 'SearchForm__input' %>
-      <%= form.submit 'Search', class: 'SearchForm__submit' %>
+      <%= form.submit 'Search', class: 'SearchForm__submit', data: { disable_with: false, action: "click->search#addQueryString" } %>
 
       <% if params.dig(:journal, :search) %>
         <%= link_to journals_path do %>

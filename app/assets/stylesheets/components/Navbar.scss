@@ -16,7 +16,12 @@
 
   #{$component}__link {
     color: $ghost-white;
+    font-size: 22px;
     text-decoration: none;
+
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
   }
 
   #{$component}__menu:hover {

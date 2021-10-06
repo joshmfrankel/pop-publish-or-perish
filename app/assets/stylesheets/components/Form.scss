@@ -1,0 +1,34 @@
+.Form {
+  background: lighten($glossy-grape, 33%);
+  border: 3px solid $glossy-grape;
+  padding: 20px;
+}
+.Form__input,
+.Form__Submit-button,
+.Form__multiple-select {
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 100%;
+  font-size: 16px;
+}
+.Form__input {
+  height: 30px;
+}
+.Form__multiple-select {
+  padding: 5px;
+}
+.Form__Submit-button {
+  background-color: $glossy-grape;
+  color: $ghost-white;
+  padding: 10px;
+  font-size: 16px;
+}
+.Form__Submit-button:hover {
+  cursor: pointer;
+  filter: brightness(125%);
+}
+.Form__select {
+
+}

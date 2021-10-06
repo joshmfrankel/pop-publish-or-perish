@@ -6,20 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-truncate_table(table: "journals")
-Journal.create([
+Journal.create_or_find_by!([
   {
     title: "First Journal",
-    description: "First Description",
     impact_factor: 0.5
   },
   {
     title: "Second Journal",
-    description: "Second Description",
     impact_factor: 0.5
   }
 ])
 
-def truncate_table(table:)
-  ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
-end
+Academic.create_or_find_by!(name: "admin", role: :admin, email: "admin@example.com", password: "asdfasdf")

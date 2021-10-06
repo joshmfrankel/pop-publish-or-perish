@@ -1,8 +1,10 @@
 <div class="Navbar">
   <div class="Navbar__innerContainer">
     <span class="Navbar-home">
-      <i class="fas fa-book"></i>
-      <%= link_to "POP", root_path, class: "Navbar__link" %>
+
+      <%= link_to root_path, class: "Navbar__link" do %>
+        <i class="fas fa-book"></i>
+      <% end %>
       <%= link_to "Journals", journals_path, class: "Navbar__link" %>
       <% if current_academic.admin_role? %>
         <%= link_to "Methodologies", methodologies_path, class: "Navbar__link" %>

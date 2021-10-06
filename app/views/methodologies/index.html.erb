@@ -1,0 +1,27 @@
+<div class="Content__container JournalActions">
+  <div class="Content__innerContainer">
+    <% if current_academic.admin_role? %>
+      <%= link_to new_methodology_path, class: "JournalActions__item" do %>
+        <i class="fas fa-plus-square Actions__add"></i> Create Methodology
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="Content__container">
+  <table class='JournalTable Content__innerContainer Content__innerContainer--no-padding'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @methodologies.each do |methodology| %>
+      <tr>
+        <td><%= link_to methodology.name, methodology_path(methodology.id) %></td>
+        <td><%= link_to 'Destroy', methodology, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,18 @@
+<div class="Content__container">
+  <h1>Methodology</h1>
+  <ul>
+    <li>Name: <%= @methodology.name %></li>
+  </ul>
+  <% if current_academic.admin_role? %>
+    <div class="Actions">
+      <%= link_to edit_methodology_path(@methodology) do %>
+        <i class="fas fa-edit"></i>
+        Edit
+      <% end %>
+      <%= link_to @methodology, method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-minus-circle"></i>
+        Delete
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="Content__container">
+  <h1>Editing Methodology</h1>
+
+  <%= form_with model: @methodology, class: "Form" do |form| %>
+    <%= render partial: 'form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit "Update", class: "Form__Submit-button" %>
+    </div>
+
+    <div class="other-links">
+      <%= link_to "Back to listing", methodologies_path %>
+    </div>
+  <% end %>
+</div>
