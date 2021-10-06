@@ -3,10 +3,15 @@ class JournalsController < ApplicationController
 
   def index
     journals = Journal.all
+    search_term = params[:search_term]
 
     # Policy to exclude unapproved journals from guests/default role
     if !current_academic.admin_role? && !current_academic.approver_role?
       journals = journals.approved
+    end
+
+    if search_term.present?
+      journals = journals.search_by_title(search_term)
     end
 
     @journals = journals

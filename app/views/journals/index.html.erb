@@ -17,10 +17,10 @@
     <% end %>
 
     <%= form_with url: search_journals_path, class: "SearchForm Content__item--push", data: { controller: "search" } do |form| %>
-      <%= form.text_field 'search_term', placeholder: 'Enter search terms...', class: 'SearchForm__input' %>
+      <%= form.text_field 'search_term', placeholder: 'Enter search terms...', class: 'SearchForm__input', data: { "search-target" => "term" } %>
       <%= form.submit 'Search', class: 'SearchForm__submit', data: { disable_with: false, action: "click->search#addQueryString" } %>
 
-      <% if params.dig(:journal, :search) %>
+      <% if params[:search_term].present? %>
         <%= link_to journals_path do %>
           <i class="fas fa-minus-circle"></i>
           Reset search
@@ -29,17 +29,15 @@
     <% end %>
   </div>
 
-  <table class='JournalTable Content__innerContainer Content__innerContainer--no-padding'>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Impact Factor</th>
-        <% if current_academic.admin_role? || current_academic.approver_role? %>
-          <th>Approve</th>
-        <% end %>
-      </tr>
-    </thead>
+  <div class='Table Content__innerContainer Content__innerContainer--no-padding'>
+    <div class='Table__headings'>
+      <span>Title</span>
+      <span>Impact Factor</span>
+      <% if current_academic.admin_role? || current_academic.approver_role? %>
+        <span>Approve</span>
+      <% end %>
+    </div>
 
     <%= render partial: "journals/listing", locals: { journals: @journals } %>
-  </table>
+  </div>
 </div>

@@ -1,13 +1,13 @@
-<tbody id="journalsListing">
+<div class='Table__body' id="journalsListing">
   <% journals.each do |journal| %>
-    <tr>
-      <td><%= link_to journal.title, journal_path(journal.id) %></td>
-      <td><%= journal.impact_factor %></td>
-      <% if current_academic.admin_role? || current_academic.approver_role? %>
-        <td>
-          <%= check_box_tag dom_id(journal, :checkbox), '', journal.approved?, data: { url: toggle_approval_journal_path(journal), remote: true, method: :patch } %>
-        </td>
-      <% end %>
-    </tr>
+    <div class='Table__row'>
+      <turbo-frame id=<%= "journal_#{journal.id}" %>>
+        <span><%= link_to journal.title, journal_path(journal.id) %></span>
+        <span><%= journal.impact_factor %></span>
+        <% if current_academic.admin_role? || current_academic.approver_role? %>
+          <span><%= journal.approved? %></span>
+        <% end %>
+      </turbo-frame>
+    </div>
   <% end %>
-</tbody>
+</div>

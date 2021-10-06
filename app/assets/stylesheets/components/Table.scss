@@ -1,0 +1,16 @@
+.Table {
+  $root: &;
+  &__headings {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__body {
+
+  }
+
+  &__row {
+    border-bottom: 1px solid $space-cadet;
+    padding: 20px;
+  }
+}
