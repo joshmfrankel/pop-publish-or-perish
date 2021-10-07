@@ -4,6 +4,7 @@ class Journal < ApplicationRecord
   belongs_to :approver, class_name: "Academic", required: false
   has_many :journal_methodologies
   has_many :methodologies, through: :journal_methodologies
+  accepts_nested_attributes_for :methodologies
 
   validates :impact_factor, presence: true
 

@@ -24,11 +24,25 @@
   color: $ghost-white;
   padding: 10px;
   font-size: 16px;
+  border: 1px solid $english-violet;
 }
 .Form__Submit-button:hover {
   cursor: pointer;
   filter: brightness(125%);
 }
-.Form__select {
-
+.Form__group {
+  display: flex;
+  flex-direction: column;
+}
+.Form__groupName {
+  margin-top:0;
+  margin-bottom: 5px;
+}
+.Form__collection {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid;
 }

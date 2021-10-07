@@ -8,9 +8,14 @@
   <%= form.number_field :impact_factor, class: "Form__input" %>
 </div>
 
-<div class="text-field">
-  <%= form.label :methodologies %>
-  <%= form.fields_for :journal_methodologies do |methodology_form| %>
-    <%= methodology_form.select :methodology_id, @methodologies.pluck(:name, :id), { selected: @journal.methodologies.select(:id) } %>
-  <% end %>
+<div class="Form__group">
+  <p class="Form__groupName">Methodologies</p>
+  <div class="Form__collection">
+    <%= form.collection_check_boxes :methodology_ids, Methodology.all, :id, :name do |box| %>
+      <%= box.label do %>
+        <%= box.check_box %>
+        <%= box.text %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

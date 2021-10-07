@@ -9,19 +9,19 @@
 </div>
 
 <div class="Content__container">
-  <table class='JournalTable Content__innerContainer Content__innerContainer--no-padding'>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th></th>
-      </tr>
-    </thead>
+  <div class='Table Content__innerContainer Content__innerContainer--no-padding'>
+    <div class='Table__headings'>
+      <span>Name</span>
+      <span>Actions</span>
+    </div>
 
-    <% @methodologies.each do |methodology| %>
-      <tr>
-        <td><%= link_to methodology.name, methodology_path(methodology.id) %></td>
-        <td><%= link_to 'Destroy', methodology, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
+    <div class='Table__body'>
+      <% @methodologies.each do |methodology| %>
+        <div class='Table__row'>
+          <span><%= link_to methodology.name, methodology_path(methodology.id) %></span>
+          <span><%= button_to 'Destroy', methodology, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

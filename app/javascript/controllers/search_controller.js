@@ -17,7 +17,6 @@ export default class extends Controller {
   }
 
   addQueryString() {
-    console.log('You clicked me');
     if (this.term === "") {
       const cleanURL = location.protocol + "//" + location.host + location.pathname;
       history.replaceState({}, document.title, cleanURL);

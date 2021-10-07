@@ -74,7 +74,19 @@ class JournalsController < ApplicationController
   private
 
   def journal_params
-    # params[:journal][:journal_methodologies_attributes][:methodology_id] = params[:journal][:journal_methodologies_attributes][:methodology_id].reject { |m| m.empty? }.map(&:to_i)
-    params.require(:journal).permit(:title, :description, :impact_factor, journal_methodologies_attributes: { })
+    returned_params = params.require(:journal).permit(
+      :title,
+      :description,
+      :impact_factor,
+      methodology_ids: []
+    )
+
+    if params.dig(:journal, :approval) == "1"
+      returned_params.merge(approved_at: Time.now, approver: current_academic)
+    elsif params.dig(:journal, :approval) == "0"
+      returned_params.merge(approved_at: nil, approver: nil)
+    else
+      returned_params
+    end
   end
 end
